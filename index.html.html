@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Shivora Computer Training School | Computer Courses</title>
+    <meta name="description" content="Shivora Computer Training School offers Basic Computer, C Programming, Python and Web Designing courses in Gurugram.">
+
+    <style> 
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #222;
+            background: #fff;
+        }
+
+        /* Header */
+        .header {
+            width: 100%;
+            padding: 14px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #f0fbff;
+            box-shadow: 0 2px 12px rgba(0,0,0,.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            width: 180px;
+            height: 62px;
+            object-fit: contain;
+            object-position: center;
+            display: block;
+        }
+
+        .logo span {
+            display: block;
+            font-size: 25px;
+            font-weight: bold;
+            color: #1d3f83;
+        }
+
+        .logo small {
+            color: #555;
+            font-size: 11px;
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: #222;
+            font-weight: 600;
+        }
+
+        .navbar a:hover {
+            color: #155eef;
+        }
+
+        /* Dropdown */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown > button {
+            border: 0;
+            background: transparent;
+            font: inherit;
+            font-weight: 600;
+            cursor: pointer;
+            color: #222;
+            padding: 10px 0;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 210px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 8px 25px rgba(0,0,0,.12);
+            padding: 8px;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 10px 12px;
+            border-radius: 6px;
+        }
+
+        .dropdown-menu a:hover {
+            background: #eef4ff;
+        }
+
+        .menu-btn {
+            display: none;
+            border: none;
+            background: none;
+            font-size: 28px;
+            cursor: pointer;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            padding: 80px 7%;
+            background: linear-gradient(135deg, #eaf8ff, #dce9ff);
+        }
+
+        .hero-content {
+            max-width: 760px;
+        }
+
+        .hero h1 {
+            font-size: 54px;
+            line-height: 1.12;
+            color: #173b7a;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: #4b5563;
+            margin-bottom: 30px;
+            max-width: 650px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 13px 25px;
+            background: #155eef;
+            color: white;
+            border: none;
+            border-radius: 7px;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #0d47c5;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #155eef;
+            border: 2px solid #155eef;
+        }
+
+        .btn-outline:hover {
+            color: white;
+        }
+
+        /* Sections */
+        .section {
+            padding: 80px 7%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-title h2 {
+            font-size: 38px;
+            margin-bottom: 10px;
+            color: #173b7a;
+        }
+
+        .section-title p {
+            color: #666;
+        }
+
+        /* About */
+        .about-container {
+            max-width: 1100px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            color: #555;
+            margin-bottom: 18px;
+        }
+
+        .about-box {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .stat {
+            padding: 28px;
+            text-align: center;
+            background: #f5f8ff;
+            border-radius: 10px;
+        }
+
+        .stat:last-child {
+            grid-column: 1 / -1;
+        }
+
+        .stat h3 {
+            font-size: 28px;
+            color: #155eef;
+        }
+
+        .stat p {
+            color: #555;
+        }
+
+        /* Courses */
+        .courses-section {
+            background: #f3f7ff;
+        }
+
+        .course-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 22px;
+            max-width: 1250px;
+            margin: auto;
+        }
+
+        .course-card {
+            background: white;
+            padding: 28px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,.07);
+            transition: .3s;
+        }
+
+        .course-card:hover {
+            transform: translateY(-7px);
+        }
+
+        .course-icon {
+            width: 58px;
+            height: 58px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #e9f0ff;
+            color: #155eef;
+            border-radius: 10px;
+            font-size: 23px;
+            font-weight: bold;
+            margin-bottom: 18px;
+        }
+
+        .course-card h3 {
+            margin-bottom: 12px;
+            font-size: 22px;
+        }
+
+        .course-card p {
+            color: #666;
+            margin-bottom: 18px;
+        }
+
+        .course-card a {
+            color: #155eef;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .syllabus-btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 14px;
+            background: #173b7a;
+            color: white !important;
+            border-radius: 7px;
+            text-decoration: none !important;
+            font-size: 14px;
+        }
+
+        .syllabus-btn:hover {
+            background: #0d47c5;
+        }
+
+        /* Features */
+        .features {
+            max-width: 1200px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 22px;
+        }
+
+        .feature {
+            padding: 28px;
+            text-align: center;
+            border: 1px solid #eee;
+            border-radius: 10px;
+        }
+
+        .feature-icon {
+            font-size: 38px;
+            margin-bottom: 15px;
+        }
+
+        .feature h3 {
+            margin-bottom: 10px;
+        }
+
+        .feature p {
+            color: #666;
+        }
+
+        /* Contact */
+        .contact-section {
+            padding: 80px 7%;
+            background: #f6f8fc;
+        }
+
+        .contact-container {
+            max-width: 1100px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-info h3 {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .contact-info > p {
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .contact-item {
+            margin-bottom: 25px;
+        }
+
+        .contact-item strong {
+            color: #155eef;
+        }
+
+        .contact-item p {
+            margin-top: 5px;
+            color: #555;
+        }
+
+        .contact-item a {
+            color: #155eef;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .enquiry-form {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,.07);
+        }
+
+        .enquiry-form input,
+        .enquiry-form select,
+        .enquiry-form textarea {
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 15px;
+        }
+
+        .enquiry-form textarea {
+            resize: vertical;
+        }
+
+        .enquiry-form .btn {
+            width: 100%;
+        }
+
+
+        /* Social Media */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 18px;
+            margin-top: 18px;
+            flex-wrap: wrap;
+        }
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 9px 14px;
+            border: 1px solid #3a4558;
+            border-radius: 8px;
+            transition: .2s;
+        }
+        .social-links a:hover {
+            background: #1f2937;
+            transform: translateY(-2px);
+        }
+        .social-icon {
+            width: 22px;
+            height: 22px;
+            display: block;
+            fill: currentColor;
+        }
+
+        /* Footer */
+        .footer {
+            background: #101828;
+            color: white;
+            text-align: center;
+        }
+
+        .footer-content {
+            padding: 45px 20px;
+        }
+
+        .footer-content h2 {
+            margin-bottom: 10px;
+        }
+
+        .footer-content p {
+            color: #ccc;
+            margin: 8px 0;
+        }
+
+        .copyright {
+            padding: 18px;
+            border-top: 1px solid #293241;
+            color: #aaa;
+        }
+
+        /* Floating buttons */
+        .floating-buttons {
+            position: fixed;
+            right: 18px;
+            bottom: 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 999;
+        }
+
+        .float-btn {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            background: #155eef;
+            color: white;
+            font-size: 22px;
+            box-shadow: 0 5px 15px rgba(0,0,0,.2);
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .course-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .features {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 700px) {
+            .header {
+                padding: 12px 5%;
+            }
+
+            .logo span {
+                font-size: 21px;
+            }
+
+            .logo small {
+                font-size: 9px;
+            }
+
+            .logo-img {
+                width: 150px;
+                height: 55px;
+            }
+
+            .navbar {
+                display: none;
+                position: absolute;
+                top: 68px;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                align-items: stretch;
+                padding: 15px 5%;
+                gap: 5px;
+                box-shadow: 0 5px 15px rgba(0,0,0,.1);
+            }
+
+            .navbar.active {
+                display: flex;
+            }
+
+            .navbar a,
+            .dropdown > button {
+                padding: 10px 0;
+                text-align: left;
+            }
+
+            .dropdown-menu {
+                position: static;
+                box-shadow: none;
+                padding: 0 0 0 15px;
+                min-width: 0;
+            }
+
+            .dropdown.open .dropdown-menu {
+                display: block;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            .hero {
+                min-height: 520px;
+                padding: 60px 5%;
+            }
+
+            .hero h1 {
+                font-size: 39px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                max-width: 270px;
+            }
+
+            .section,
+            .contact-section {
+                padding: 60px 5%;
+            }
+
+            .section-title h2 {
+                font-size: 30px;
+            }
+
+            .about-container,
+            .contact-container,
+            .course-container,
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .about-box {
+                grid-template-columns: 1fr;
+            }
+
+            .stat:last-child {
+                grid-column: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="header">
+    <a href="#home" class="logo">
+        <img src="shivora_logo.png" alt="Shivora Education & Learning Logo" class="logo-img">
+    </a>
+
+    <nav class="navbar" id="navbar">
+        <a href="#home">Home</a>
+        <a href="#about">About Us</a>
+
+        <div class="dropdown" id="courseDropdown">
+            <button type="button" onclick="toggleDropdown()">Courses▾</button>
+            <div class="dropdown-menu">
+                <a href="#basic-computer">Basic Computer</a>
+                <a href="#c-programming">C Programming</a>
+                <a href="#python">Python</a>
+                <a href="#web-designing">Web Designing</a>
+            </div>
+        </div>
+
+        <a href="#why-us">Why Us</a>
+        <a href="#contact">Contact Us</a>
+    </nav>
+
+    <button class="menu-btn" onclick="toggleMenu()" aria-label="Open menu">☰</button>
+</header>
+
+<section id="home" class="hero">
+    <div class="hero-content">
+        <h1>Start Your Computer Learning Journey with Shivora</h1>
+        <p>
+            Learn essential computer skills and programming through
+            practical, easy-to-understand training in Gurugram.
+        </p>
+
+        <div class="hero-buttons">
+            <a href="#courses" class="btn">Explore Courses</a>
+            <a href="#contact" class="btn btn-outline">Contact Us</a>
+        </div>
+    </div>
+</section>
+
+<section id="about" class="section">
+    <div class="section-title">
+        <h2>About Shivora Computer Training School</h2>
+        <p>Learn. Practice. Grow.</p>
+    </div>
+
+    <div class="about-container">
+        <div class="about-text">
+            <h3>Practical Computer Education</h3>
+            <p>
+               Shivora Computer Training School provides practical and career-focused computer education. We offer courses in Basic Computer, C, Python, Web Designing, HTML, CSS & JavaScript.
+               Our focus is on practical learning, easy teaching, and skill development, helping students build confidence and prepare for their careers.
+            </p>
+            <p>
+                Our courses focus on theoretical knowledge along with
+                practical programming skills and exercises.
+            </p>
+            <a href="#contact" class="btn">Enquire Now</a>
+        </div>
+
+        <div class="about-box">
+            <div class="stat">
+                <h3>100%</h3>
+                <p>Practical Learning</p>
+            </div>
+            <div class="stat">
+                <h3>4+</h3>
+                <p>Computer Courses</p>
+            </div>
+            <div class="stat">
+                <h3>Personal</h3>
+                <p>Guidance</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="courses" class="section courses-section">
+    <div class="section-title">
+        <h2>Our Courses</h2>
+        <p>Choose the right computer course for your career.</p>
+    </div>
+
+    <p style="text-align:center; color:#666; margin:-20px auto 30px;">
+        Download the separate syllabus PDF for each course.
+    </p>
+
+    <div class="course-container">
+
+        <div class="course-card" id="basic-computer">
+            <div class="course-icon">💻</div>
+            <h3>Basic Computer</h3>
+            <p>Computer fundamentals, Windows, MS Word, Excel, PowerPoint and Internet.</p>
+            <a href="#contact">Enquire Now →</a><br><a class="syllabus-btn" href="Basic_Computer_Syllabus.pdf" download>📥 Download Syllabus</a>
+        </div>
+
+        <div class="course-card" id="c-programming">
+            <div class="course-icon">C</div>
+            <h3>C Programming</h3>
+            <p>Programming fundamentals, loops, functions, arrays, pointers and more.</p>
+            <a href="#contact">Enquire Now →</a><br><a class="syllabus-btn" href="C_Programming_Syllabus.pdf" download>📥 Download Syllabus</a>
+        </div>
+
+        <div class="course-card" id="python">
+            <div class="course-icon">🐍</div>
+            <h3>Python</h3>
+            <p>Learn Python programming from basics to practical programming exercises.</p>
+            <a href="#contact">Enquire Now →</a><br><a class="syllabus-btn" href="Python_Syllabus.pdf" download>📥 Download Syllabus</a>
+        </div>
+
+        <div class="course-card" id="web-designing">
+            <div class="course-icon">🌐</div>
+            <h3>Web Designing</h3>
+            <p>Learn HTML, CSS and JavaScript to create responsive websites.</p>
+            <a href="#contact">Enquire Now →</a><br><a class="syllabus-btn" href="Web_Designing_Syllabus.pdf" download>📥 Download Syllabus</a>
+        </div>
+
+    </div>
+</section>
+
+<section id="why-us" class="section">
+    <div class="section-title">
+        <h2>Why Choose Shivora?</h2>
+        <p>Focused on practical and career-oriented learning.</p>
+    </div>
+
+    <div class="features">
+        <div class="feature">
+            <div class="feature-icon">🎯</div>
+            <h3>Practical Training</h3>
+            <p>Learn concepts through practical exercises and programming examples.</p>
+        </div>
+
+        <div class="feature">
+            <div class="feature-icon">👨‍🏫</div>
+            <h3>Personal Guidance</h3>
+            <p>Get guidance while learning computer and programming concepts.</p>
+        </div>
+
+        <div class="feature">
+            <div class="feature-icon">📚</div>
+            <h3>Course Material</h3>
+            <p>Practice with structured lessons, examples and exercises.</p>
+        </div>
+
+        <div class="feature">
+            <div class="feature-icon">💼</div>
+            <h3>Career Skills</h3>
+            <p>Develop computer skills useful for education and professional careers.</p>
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="contact-section">
+    <div class="section-title">
+        <h2>Student Enquiry</h2>
+        <p>Interested in joining a course? Send us your enquiry.</p>
+    </div>
+
+    <div class="contact-container">
+        <div class="contact-info">
+            <h3>Shivora Computer Training School</h3>
+            <p>Learn computer skills and programming with practical training.</p>
+
+            <div class="contact-item">
+                <strong>📞Call Us</strong>
+                <p><a href="tel:+918860040098">+918860040098</a></p>
+            </div>
+
+            <div class="contact-item">
+                <strong>📍Address</strong>
+                <p>A-137, Vipul World, Sector 48, Gurugram</p>
+            </div>
+
+            <div class="contact-item">
+                <strong>🕒Training</strong>
+                <p>Computer & Programming Courses</p>
+            </div>
+        </div>
+
+        <form id="enquiryForm" class="enquiry-form">
+            <input type="text" id="name" placeholder="Your Name" required>
+            <input type="tel" id="phone" placeholder="Phone Number" required>
+
+            <select id="course" required>
+                <option value="">Select Course</option>
+                <option value="Basic Computer">Basic Computer</option>
+                <option value="C Programming">C Programming</option>
+                <option value="Python">Python</option>
+                <option value="Web Designing">Web Designing</option>
+            </select>
+
+            <textarea id="message" placeholder="Enquiry / Requirement" rows="6"></textarea>
+
+            <button type="submit" class="btn">Submit Enquiry</button>
+        </form>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="footer-content">
+        <h2>Shivora Computer Training School</h2>
+        <p>Learn Computer. Learn Programming. Build Your Future.</p>
+        <p>📞<a href="tel:8860040098" style="color:white;">+918860040098</a></p>
+        <div class="social-links" aria-label="Social media links">
+            <a href="https://www.instagram.com/shivora7668/" target="_blank" rel="noopener" aria-label="Follow Shivora on Instagram">
+                <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9zm9.75 1.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0-6z"/>
+                </svg>
+                Follow us on Instagram
+            </a>
+            <a href="https://www.facebook.com/people/Shivora-Computer-Training-School/61593659849257/" target="_blank" rel="noopener" aria-label="Follow Shivora on Facebook">
+                <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M13.5 21v-8h2.75l.4-3h-3.15V8.1c0-.87.24-1.46 1.5-1.46h1.6V3.95c-.28-.04-1.23-.12-2.34-.12-2.32 0-3.91 1.42-3.91 4.03V10H8.75v3h2.6v8h2.15z"/>
+                </svg>
+                Follow us on Facebook
+            </a>
+        </div>
+    </div>
+
+    <div class="copyright">
+        <p>© <span id="year"></span> Shivora Computer Training School. All Rights Reserved.</p>
+    </div>
+</footer>
+
+<div class="floating-buttons">
+    <a class="float-btn" href="tel:+918860040098" aria-label="Call Shivora">📞</a>
+    <a class="float-btn" href="https://wa.me/918860040098" target="_blank" rel="noopener" aria-label="WhatsApp Shivora">💬</a>
+</div>
+
+<script>
+    function toggleMenu() {
+        document.getElementById("navbar").classList.toggle("active");
+    }
+
+    function toggleDropdown() {
+        if (window.innerWidth <= 700) {
+            document.getElementById("courseDropdown").classList.toggle("open");
+        }
+    }
+
+    document.querySelectorAll(".navbar a").forEach(function(link) {
+        link.addEventListener("click", function() {
+            document.getElementById("navbar").classList.remove("active");
+        });
+    });
+
+    document.getElementById("enquiryForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const name = document.getElementById("name").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const course = document.getElementById("course").value;
+    const message = document.getElementById("message").value.trim();
+
+    alert(
+        "Thank you " + name +
+        "! Your Enquiry For " + course +
+        " has been received."
+    );
+
+    const whatsappMessage =
+        "📚 *New Student Enquiry - Shivora Computer Training School*\\n\\n" +
+        "👤 *Name:* " + name + "\\n" +
+        "📞 *Phone:* " + phone + "\\n" +
+        "📚 *Course:* " + course + "\\n" +
+        "📝 *Enquiry:* " + (message || "Not provided");
+
+    const whatsappURL =
+        "https://wa.me/918860040098?text=" +
+        encodeURIComponent(whatsappMessage);
+
+
+    window.open(whatsappURL, "_blank");
+
+    this.reset();
+});
+
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
